@@ -4,7 +4,9 @@
   "description": "图形验证码服务接入示例",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node ./src/index.ts",
+    "dev": "node -r ts-node/register ./src/index.ts",
+    "clean": "rm -rf dist"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/youthcity/graph-captcha/issues"
   },
-  "homepage": "https://github.com/youthcity/graph-captcha#readme"
+  "homepage": "https://github.com/youthcity/graph-captcha#readme",
+  "dependencies": {
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.3"
+  }
 }
