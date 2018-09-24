@@ -1,0 +1,24 @@
+{
+  "name": "graph-captcha",
+  "version": "0.1.0",
+  "description": "图形验证码服务接入示例",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youthcity/graph-captcha.git"
+  },
+  "keywords": [
+    "geetest",
+    "captcha",
+    "graph-captcha"
+  ],
+  "author": "youthcity <397731024@qq.com> (https://www.jianshu.com/u/38fded676749)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/youthcity/graph-captcha/issues"
+  },
+  "homepage": "https://github.com/youthcity/graph-captcha#readme"
+}
