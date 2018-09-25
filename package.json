@@ -24,7 +24,17 @@
   },
   "homepage": "https://github.com/youthcity/graph-captcha#readme",
   "dependencies": {
+    "koa": "^2.5.3",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
     "ts-node": "^7.0.1",
     "typescript": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.46",
+    "@types/koa-bodyparser": "^5.0.1",
+    "@types/koa-router": "^7.0.32",
+    "@types/koa-static": "^4.0.0"
   }
 }
