@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/youthcity/graph-captcha#readme",
   "dependencies": {
+    "gt3-sdk": "^2.0.0",
     "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",

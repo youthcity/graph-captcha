@@ -10,7 +10,7 @@ const PORT = 4000;
 const app = new Koa();
 const router = new Router();
 
-const staticPath = '../static';
+const staticPath = './static';
 
 app.use(bodyParser());
 app.use(serve(
@@ -20,6 +20,17 @@ app.use(serve(
 router.get('/', (ctx, next) => {
   ctx.body = 'hello world';
 });
+
+// 【极验】 API 1 —— 获取验证流水
+router.get('/geetest/register', async (ctx, next) => {
+
+});
+
+// 【极验】 API 2 —— 二次验证
+router.get('/geetest/validate', async (ctx, next) => {
+
+});
+
 
 app.use(router.routes())
   .use(router.allowedMethods());
