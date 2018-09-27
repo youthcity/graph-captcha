@@ -24,7 +24,7 @@ export const register = async (ctx:any, next:any) => {
 export const validate = async (ctx:any, next:any) => {
   const { geetest_challenge, geetest_validate, geetest_seccode } = ctx.query;
   const is_fallback = ctx.session.is_fallback ? true : false;
-  console.log(ctx.session.is_fallback);
+
   const is_pass = await Client.validate(is_fallback, {
     geetest_challenge,
     geetest_validate,
