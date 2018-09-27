@@ -19,11 +19,16 @@ export interface RegisterParams {
 }
 
 export interface RegisterData {
-  a:string;
+  challenge:string;
+  gt:string;
+  new_captcha:boolean;
+  success:number;
 }
 
 export interface ValidateParams {
-
+  geetest_challenge:string;
+  geetest_validate:string;
+  geetest_seccode:string;
 }
 
 export class GeetestClient {
@@ -32,12 +37,12 @@ export class GeetestClient {
   constructor(config:Config) {
     this.client = new Geetest({
       geetest_id: config.geetest_id,
-      geetest_key: config.geetest_id,
+      geetest_key: config.geetest_key,
     });
   }
 
-  public async register(params?:RegisterParams) : Promise<any> {
-    return new Promise((reslove, reject) => {
+  public async register(params?:RegisterParams) : Promise<RegisterData> {
+    return new Promise<RegisterData>((reslove, reject) => {
       this.client.register(params, (err:any, data:RegisterData) => {
         if (err) {
           return reject(err);
@@ -48,9 +53,13 @@ export class GeetestClient {
     });
   }
 
-  public async validate(fallback:boolean, params:ValidateParams) : Promise<any> {
-    return new Promise((reslove, reject) => {
-      return this.client.validate(fallback, params, (err:any, success:boolean) => {
+  public async validate(fallback:boolean, params:ValidateParams) : Promise<boolean> {
+    return new Promise<boolean>((reslove, reject) => {
+      return this.client.validate(fallback, {
+        geetest_challenge: params.geetest_challenge,
+        geetest_validate: params.geetest_validate,
+        geetest_seccode: params.geetest_seccode,
+      }, (err:any, success:boolean) => {
         if (err) {
           return reslove(false);
         }

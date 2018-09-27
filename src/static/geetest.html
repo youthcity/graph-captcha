@@ -5,8 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>防水墙接入测试</title>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-  <h1>sssss</h1>
+
+  <div id="test">测试</div>
+
+  <script src="http://static.geetest.com/static/tools/gt.js"></script>
+  <script>
+    
+    const fetch_geetest_register_params = () => {
+      return new Promise((reslove, reject) => {
+        $.ajax({
+          type: 'get',
+          url: `http://localhost:4000/geetest/register`,
+          success: (data) => {
+            reslove(data);
+          },
+        });
+      });
+    };
+
+    const init_geetest = (data) => {
+      return new Promise((reslove, reject) => {
+
+        initGeetest({
+            gt: data.gt,
+            challenge: data.challenge,
+            offline: !data.success,
+            new_captcha : true,
+            product: 'popup',
+            width: '300ox',
+        }, function (captchaObj) {
+
+          captchaObj.appendTo('#test');
+          captchaObj.onReady(function () {
+            console.log('Ready...');
+          }).onSuccess(function () {
+            console.log('success...');
+            // validate(captchaObj);
+          reslove(captchaObj);
+
+          }).onError(function () {
+            console.log('error...');
+          });
+
+        });
+      });
+    };
+
+    const validate = (captchaObj) => {
+      return new Promise((reslove, reject) => {
+        const result = captchaObj.getValidate();
+
+        $.ajax({
+          url: 'http://localhost:4000/geetest/validate',
+          type: 'get',
+          data: result,
+          success: (res) => {
+            console.log('验证结果 is_pass:', res);
+            reslove(res);
+          },
+        })
+
+      });
+    };
+
+    fetch_geetest_register_params()
+      .then(init_geetest)
+      .then(validate);
+
+  </script>
 </body>
 </html>
