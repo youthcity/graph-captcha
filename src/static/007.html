@@ -8,7 +8,7 @@
   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-  <button id="TencentCaptcha" data-appid="2090859026" data-cbfn="callback">验证</button>
+  <button id="TencentCaptcha" data-appid="appId" data-cbfn="callback">验证</button>
 
   <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
   <script>
@@ -36,6 +36,23 @@
         console.log('验证失败');
       }
     };
+
+    // 声明一个验证码对象
+    // 直接生成一个验证码对象
+    // var captcha1 = new TencentCaptcha('2090859026', function(res) {
+    //   console.log(res);
+    // });
+    // captcha1.show(); // 显示验证码
+
+    // const captcha1 = new TencentCaptcha(
+    //   document.getElementById('TencentCaptcha'),
+    //   '2090859026',
+    //   function (res) { console.log(res)  },
+    //   { bizState: 'tiancity' }
+    // );
+    // captcha1.show();
+
+    // const Captcha = new TencentCaptcha();
   </script>
 </body>
 </html>
