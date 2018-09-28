@@ -5,8 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>防水墙图形验证码接入测试</title>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-  
+  <button id="TencentCaptcha" data-appid="2090859026" data-cbfn="callback">验证</button>
+
+  <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+  <script>
+    window.callback = function (res) {
+      console.log(res)
+      // res（未通过验证）= {ret: 1, ticket: null}
+      // res（验证成功） = {ret: 0, ticket: "String", randstr: "String"}
+      if (res.ret === 0) {
+        console.log('验证成功');
+        const { ticket, randstr } = res;
+
+        $.ajax({
+          type: 'get',
+          url: 'http://localhost:4000/waterproof-wall/validate',
+          data: {
+            ticket,
+            randstr,
+          },
+          success: (res) => {
+            console.log('验证成功', res);
+          },
+        });
+
+      } else if (res.ret == 1) {
+        console.log('验证失败');
+      }
+    };
+  </script>
 </body>
 </html>

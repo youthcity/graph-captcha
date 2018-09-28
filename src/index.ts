@@ -8,6 +8,7 @@ import path = require('path');
 require('env2')('.env');
 
 import * as geetest_controller from './geetest/controller';
+import * as waterproof_wall_controller from './waterproof_wall/controller';
 
 const app = new Koa();
 const router = new Router();
@@ -37,6 +38,8 @@ router.get('/geetest/register', geetest_controller.register);
 // 【极验】 API 2 —— 二次验证
 router.get('/geetest/validate', geetest_controller.validate);
 
+// 【防水墙】 验证
+router.get('/waterproof-wall/validate', waterproof_wall_controller.validate);
 
 app.use(router.routes())
   .use(router.allowedMethods());

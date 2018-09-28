@@ -32,6 +32,8 @@
     "koa-router": "^7.4.0",
     "koa-session": "^5.9.0",
     "koa-static": "^5.0.0",
+    "lodash": "^4.17.11",
+    "superagent": "^4.0.0-beta.5",
     "ts-node": "^7.0.1",
     "typescript": "^3.0.3"
   },
@@ -39,6 +41,8 @@
     "@types/koa": "^2.0.46",
     "@types/koa-bodyparser": "^5.0.1",
     "@types/koa-router": "^7.0.32",
-    "@types/koa-static": "^4.0.0"
+    "@types/koa-static": "^4.0.0",
+    "@types/lodash": "^4.14.116",
+    "@types/superagent": "^3.8.4"
   }
 }
