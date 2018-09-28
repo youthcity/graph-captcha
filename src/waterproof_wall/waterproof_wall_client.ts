@@ -40,17 +40,21 @@ export class WaterproofWallClient {
 
       const res_code = +(result.response);
 
+      let is_pass = false;
       switch (res_code) {
         case 0:
-          return false;
+          is_pass = false;
+          break;
 
         case 1:
-          return true;
+          is_pass = true;
+          break;
       
         default:
-          return false;
+          is_pass = false;
+          break;
       }
 
-
+      return is_pass;
   }
 }
