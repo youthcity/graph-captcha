@@ -9,6 +9,7 @@ require('env2')('.env');
 
 import * as geetest_controller from './geetest/controller';
 import * as waterproof_wall_controller from './waterproof_wall/controller';
+import * as tianyu_controller from './tencent/controller';
 
 const app = new Koa();
 const router = new Router();
@@ -41,9 +42,14 @@ router.get('/geetest/validate', geetest_controller.validate);
 // 【防水墙】 验证
 router.get('/waterproof-wall/validate', waterproof_wall_controller.validate);
 
+// 【天御】获取 JS SDK URL
+router.get('/tianyu/js-sdk', tianyu_controller.generate_js_sdk_url);
+
+// 【天御】校验ticket 合法性
+router.get('/tianyu/verify', tianyu_controller.verify);
+
 app.use(router.routes())
   .use(router.allowedMethods());
-
 
 const { PORT } = process.env;
 

@@ -5,8 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>天御验证码接入测试</title>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
+    <div id="TCaptcha" style="width:300px;height:40px;" ></div>
 
+  <script>
+    function loadScript(url) {
+      return new Promise((resolve, reject) => {
+        var script = document.createElement("script")
+        script.type = "text/javascript";
+
+        if (script.readyState) { //IE
+          script.onreadystatechange = function () {
+            if (script.readyState == "loaded" || script.readyState == "complete") {
+              script.onreadystatechange = null;
+              return resolve();
+            }
+          };
+        } else { //Others
+          script.onload = function () {
+            resolve();
+          };
+        }
+        script.src = url;
+        document.getElementsByTagName("head")[0].appendChild(script);
+      });
+    };
+
+    const fetch_js_sdk = () => {
+      return new Promise((reslove, reject) => {
+        $.ajax({
+          type: 'get',
+          url: 'http://127.0.0.1:4000/tianyu/js-sdk',
+          data: {
+            captchaType: 9,
+            disturbLevel: 1,
+            clientType: 2,
+            accountType: 0,
+          },
+          success: (res) => {
+            if (res && res.url && res.url.url) {
+              return reslove(res.url.url);
+            } else {
+              reject('获取 JS SDK 失败');
+            }
+          },
+        })
+      });
+    };
+
+    const verify = (data) => {
+      $.ajax({
+        type: 'get',
+        url: 'http://127.0.0.1:4000/tianyu/verify',
+        data: {
+          ticket: data.ticket,
+        },
+        success: (res) => {
+          console.log(res);
+        },
+      });
+    };
+
+    // 验证码关闭时的回调
+    const callback = (res) => {
+      if (res.ret == 0) {
+          verify(res);
+        } else {
+          console.log(res, '=====');
+      }
+    }
+
+    fetch_js_sdk()
+      .then((url) => {
+        return loadScript(url);
+      }).then(() => {
+        return capInit(document.getElementById("TCaptcha"), {
+          callback: callback,
+        });
+      });
+  </script>
 </body>
 </html>
