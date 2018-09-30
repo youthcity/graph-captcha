@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/youthcity/graph-captcha#readme",
   "dependencies": {
+    "@alicloud/pop-core": "^1.7.0",
     "@types/koa-session": "^5.7.4",
     "env2": "^2.2.2",
     "gt3-sdk": "^2.0.0",

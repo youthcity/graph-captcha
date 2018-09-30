@@ -10,6 +10,7 @@ require('env2')('.env');
 import * as geetest_controller from './geetest/controller';
 import * as waterproof_wall_controller from './waterproof_wall/controller';
 import * as tianyu_controller from './tencent/controller';
+import * as ali_controller from './ali_afs/controller';
 
 const app = new Koa();
 const router = new Router();
@@ -47,6 +48,9 @@ router.get('/tianyu/js-sdk', tianyu_controller.generate_js_sdk_url);
 
 // 【天御】校验ticket 合法性
 router.get('/tianyu/verify', tianyu_controller.verify);
+
+// 【阿里】服务端校验
+router.get('/ali/verify', ali_controller.verify);
 
 app.use(router.routes())
   .use(router.allowedMethods());

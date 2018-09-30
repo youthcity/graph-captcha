@@ -41,19 +41,27 @@ yarn start // 或 npm start
 
 ## 体验地址
 
-1）测试极验
+1）极验 DEMO
 
 http://127.0.0.1:4000/geetest.html
 
-2）测试防水墙
+2）防水 DEMO
 
 http://127.0.0.1:4000/007.html
 
-3) 测试腾讯天御
+3）腾讯天御 DEMO
 
 http://127.0.0.1:4000/t.html
+
+4）阿里云盾 DEMO
+
+http://127.0.0.1:4000/ali.html
 
 ## 使用到的第三方包
 
 - [腾讯云 API 2.0 SDK for node.js](https://github.com/CFETeam/qcloudapi-sdk)
 - [Open API POP core sdk for Node.js](https://github.com/aliyun/openapi-core-nodejs-sdk)
+
+## 各服务商官方文档
+
+- [阿里 - 数据风控](https://help.aliyun.com/document_detail/66318.html?spm=a2c4g.11186623.6.561.45533bceT6DY1w)
